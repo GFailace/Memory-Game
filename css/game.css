@@ -20,6 +20,17 @@ body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
+ 
+.timers {width: 125px; float: right;}
+.timers .timer {display: inline-block;}
+.timers .timer h3 {margin: 0px;}
+.timers .restart {display: inline-block;}
+.containerdiv {max-width: 690px; width: 100%; margin: 0 auto;}
+.left {float: left;}
+.clear {clear: both;}
+.font-color {
+  color: white;
+}
 
 .container {
     display: flex;
@@ -32,11 +43,6 @@ h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
-
-/*
- * Styles for the deck of cards
- */
-
 .deck {
     width: 660px;
     min-height: 680px;
@@ -85,7 +91,7 @@ h1 {
   .deck .card.notmatch {
     background: #f95c3c;
   }
-  
+   
   #score-panel {
     text-align: left;
     width: 345px;
@@ -116,15 +122,5 @@ h1 {
   
   .swal2-overlay {
     background-color: white;
-  }
-  .timers {width: 125px; float: right;}
-  .timers .timer {display: inline-block;}
-  .timers .timer h3 {margin: 0px;}
-  .timers .restart {display: inline-block;}
-  .containerdiv {max-width: 690px; width: 100%; margin: 0 auto;}
-  .left {float: left;}
-  .clear {clear: both;}
-  .font-color {
-    color: white;
   }
   
