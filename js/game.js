@@ -2,7 +2,7 @@
  * Create a list that holds all of your cards
  */
 let symbols = ['bicycle', 'bicycle', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'paper-plane-o', 'paper-plane-o', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'],
-        $deck = $('.deck'),
+    $deck = $('.deck'),
 		$scorePanel = $('#score-panel'),
 		$moveNum = $('.moves'),
 		$ratingStars = $('i'),
@@ -67,18 +67,18 @@ let addListener = ()=> {
 		opened.push(card);
 	  if (opened.length > 1) {
 	    if (card === opened[0]) {
-	      $deck.find('.open').addClass('match animated infinite rubberBand');
+	      $deck.find('.open').addClass('match animated infinite  rubberBand');
 	      setTimeout(()=> {
-	        $deck.find('.match').removeClass('open show animated infinite rubberBand');
+	        $deck.find('.match').removeClass('open show animated infinite jello');
 	      }, 800);
 	      match++;
 	    } else {
-	      $deck.find('.open').addClass('notmatch animated infinite wobble');
+	      $deck.find('.open').addClass('notmatch animated infinite shake');
 				setTimeout(()=> {
-					$deck.find('.open').removeClass('animated infinite wobble');
+					$deck.find('.open').removeClass('animated infinite shake');
 				}, 800 / 1.5);
 	      setTimeout(()=> {
-	        $deck.find('.open').removeClass('open show notmatch animated infinite wobble');
+	        $deck.find('.open').removeClass('open show notmatch animated infinite shake');
 	      }, 800);
 	    }
 	    opened = [];
@@ -90,7 +90,7 @@ let addListener = ()=> {
 			rating(moves);
 			let score = rating(moves).score;
 			setTimeout(()=> {
-				end(moves, score);
+				fim(moves, score);
 			}, 500);
 	  }	
 	});
@@ -109,7 +109,7 @@ let rating =(moves)=> {
 	}
 	return { score };
 }
-let end = (moves, score) => {
+let fim = (moves, score) => {
 	let msg = score == 1 ? score + ' estrela' :score +' estrelas';
 	swal({
 		allowEscapeKey: false,
@@ -128,37 +128,22 @@ let end = (moves, score) => {
 	})
 }
 restart.bind('click', ()=> {
-  swal({
-    allowEscapeKey: false,
-    allowOutsideClick: false,
-    title: 'Você tem certeza?',
-    text: "Seu progresso será perdido!",
-    type: 'warning',
-		showCancelButton: true,
-		cancelButtonText:'Cancelar',
-    confirmButtonColor: '#02ccba',
-    cancelButtonColor: '#f95c3c',
-    confirmButtonText: 'Sim, Reiniciar Jogo!'
-  }).then((isConfirm)=> {
-    if (isConfirm) {
-			clicks = 0;
+ 			clicks = 0;
 			clearInterval(timer);
       ini();
-    }
   })
-})
 let gTimer = () => {
-	let startTime = new Date().getTime();
+	let start = new Date().getTime();
 	timer = setInterval(() => {
-		let now = new Date().getTime();
-		let elapsed = now - startTime;
-		let minutes = Math.floor((elapsed % (1000 * 60 * 60)) / (1000 * 60));
-		let seconds = Math.floor((elapsed % (1000 * 60)) / 1000);
-	if (seconds < 10) {
-			seconds = "0" + seconds
+		let n = new Date().getTime();
+		let total = n - start;
+		let min = Math.floor((total % (1000 * 60 * 60)) / (1000 * 60));
+		let seg = Math.floor((total % (1000 * 60)) / 1000);
+	if (seg < 10) {
+			seg = "0" + seg
 		}
-		let currentTime = minutes + ':' + seconds;
-		$(".clock").text(currentTime);
+		let time = min + ':' + seg;
+		$(".clock").text(time);
 	}, 750);
 }
 
