@@ -1,6 +1,13 @@
 /*
  * Create a list that holds all of your cards
  */
+
+ /**
+* @description Funções do Projeto de Jogo da Memória
+* @param {string} title - Udacity - Jogo da Memória
+* @param {string} author - Guilherme Failace
+*/
+
 let symbols = ['bicycle', 'bicycle', 'leaf', 'leaf', 'cube', 'cube', 'anchor', 'anchor', 'paper-plane-o', 'paper-plane-o', 'bolt', 'bolt', 'bomb', 'bomb', 'diamond', 'diamond'],
     $deck = $('.deck'),
 		$scorePanel = $('#score-panel'),
@@ -18,6 +25,8 @@ let symbols = ['bicycle', 'bicycle', 'leaf', 'leaf', 'cube', 'cube', 'anchor', '
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+//Função para iniciar o jogo
 let ini = ()=> {
     let cards = shuffle(symbols);
     $deck.empty();
@@ -56,6 +65,8 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+//Função que adiciona o Listener de click em cada carta
 let addListener = ()=> {
 	$deck.find('.card:not(".match, .open")').bind('click' , function() {
 		clicks++ ;
@@ -95,6 +106,8 @@ let addListener = ()=> {
 	  }	
 	});
 }
+
+//Função que retorna a pontuação do jogador
 let rating =(moves)=> {
 	let score = 3;
 	if(moves <= 16) {
@@ -109,29 +122,16 @@ let rating =(moves)=> {
 	}
 	return { score };
 }
-let fim = (moves, score) => {
-	let msg = score == 1 ? score + ' estrela' :score +' estrelas';
-	swal({
-		allowEscapeKey: false,
-		allowOutsideClick: false,
-		title: 'Parabéns, você venceu!',
-		text: 'com ' + moves + ' movimentos e ' + msg + '\n Woooooow!',
-		type: 'success',
-		confirmButtonColor: '#02ccba',
-		confirmButtonText: 'Jogar de novo!'
-	}).then((isConfirm)=> {
-		if (isConfirm) {
-			clicks = 0;
-			clearInterval(timer);
-			ini();
-		}
-	})
-}
+
+//Função para reiniciar o jogo
 restart.bind('click', ()=> {
  			clicks = 0;
 			clearInterval(timer);
+			opened = []
       ini();
-  })
+	})
+	
+//Função que gera o timer do jogo
 let gTimer = () => {
 	let start = new Date().getTime();
 	timer = setInterval(() => {
@@ -146,6 +146,26 @@ let gTimer = () => {
 		$(".clock").text(time);
 	}, 750);
 }
-
-
+//Função para terminar o jogo
+let fim = (moves, score) => {
+	let msg = score == 1 ? score + ' estrela' :score +' estrelas';
+	clearTimeout(timer)
+	let t = $('.time').text()
+	swal({
+		allowEscapeKey: false,
+		allowOutsideClick: false,
+		title: 'Parabéns, você venceu!',
+		text: 'com ' + moves + ' movimentos e ' + msg + '\n Woooooow!\n' + t,
+		type: 'success',
+		confirmButtonColor: '#02ccba',
+		confirmButtonText: 'Jogar de novo!'
+	}).then((isConfirm)=> {
+		if (isConfirm) {
+			clicks = 0;
+			clearInterval(timer);
+			ini();
+		}
+	})
+}
+//Iniciar o jogo
 ini();
