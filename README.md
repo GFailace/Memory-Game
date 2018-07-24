@@ -1,22 +1,22 @@
 # Memory Game Project
 
+Udacity Memory Game Project
+
 ## Table of Contents
 
 * [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Resources](#resources)
+* [Author](#author)
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+The game consists of matching two pairs of cards with the same icons. You have to turn one card at a time and if you do not hit the combination the card will face down again.
 
-To get started, open `js/game.js` and start building out the app's functionality
+When you manage to hit the eight pairs you won the game.
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+## Resources
 
+For this project it's used HTML, CSS, Bootstrap, Sweet Alert and Animation.css
 
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+## Author
+Guilherme Failace

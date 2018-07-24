@@ -43,7 +43,7 @@ let ini = ()=> {
   }
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -158,7 +158,8 @@ let fim = (moves, score) => {
 		text: 'com ' + moves + ' movimentos e ' + msg + '\n Woooooow!\n' + t,
 		type: 'success',
 		confirmButtonColor: '#02ccba',
-		confirmButtonText: 'Jogar de novo!'
+		confirmButtonText: 'Jogar de novo!',
+		imageUrl:'https://media2.giphy.com/media/d2sdxvH0u2oU0/giphy.gif'
 	}).then((isConfirm)=> {
 		if (isConfirm) {
 			clicks = 0;
